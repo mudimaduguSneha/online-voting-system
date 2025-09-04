@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote for Your Candidate</title>
+    <style>
+        body {
+            background-image: url('/static/bg-candidates.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: #333;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            display: inline-block;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            margin-top: 10vh;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        a {
+            display: block;
+            margin-top: 15px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Vote for Your Candidate</h2>
+        <form method="POST" action="/vote">
+            {% for candidate in candidates %}
+                <div>
+                    <input type="radio" name="candidate_id" value="{{ candidate.id }}" required>
+                    {{ candidate.name }}
+                </div>
+            {% endfor %}
+            <button type="submit">Vote</button>
+        </form>
+        <a href="{{ url_for('results') }}">View Voting Results</a>
+    </div>
+</body>
+</html>

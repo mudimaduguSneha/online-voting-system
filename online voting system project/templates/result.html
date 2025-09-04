@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting Results</title>
+    <style>
+        body {
+            background-image: url('/static/bg-result.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: #333;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            display: inline-block;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            margin-top: 10vh;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+        a {
+            display: block;
+            margin-top: 20px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Voting Results</h2>
+        <ul>
+            {% for candidate, votes in results.items() %}
+                <li>{{ candidate }}: {{ votes }} votes</li>
+            {% endfor %}
+        </ul>
+        <a href="{{ url_for('candidates') }}">Back to Vote</a>
+    </div>
+</body>
+</html>
